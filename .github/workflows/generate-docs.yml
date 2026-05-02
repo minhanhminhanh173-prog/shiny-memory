@@ -12,12 +12,12 @@ jobs:
         run: npm install -g jsdoc-to-markdown
 
       - name: Create Markdown File
-        run: jsdoc2md delf_b2_production_orale.js > API.md 
+        run: jsdoc2md *.js > API.md 
 
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add API.md
-          git commit -m "Auto generate documentation"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto generate documentation" && git push)
+
