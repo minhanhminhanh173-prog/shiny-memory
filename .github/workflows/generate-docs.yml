@@ -1,0 +1,24 @@
+name: Generate Markdown Docs
+on: [push] # Chạy mỗi khi bạn update file
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install jsdoc-to-markdown
+        run: npm install -g jsdoc-to-markdown
+
+      - name: Create Markdown File
+        # Thay 'ten-file-cua-ban.js' bằng tên file thật của bạn
+        run: jsdoc2md your_file_name.js > API.md 
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add API.md
+          git commit -m "Auto generate documentation"
+          git push
