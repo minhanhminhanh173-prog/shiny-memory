@@ -707,8 +707,3 @@ const doc = new Document({
     ]
   }]
 });
-
-Packer.toBuffer(doc).then(buffer => {
-  fs.writeFileSync("/home/claude/delf_b2_production_orale.docx", buffer);
-  console.log("Done!");
-});
