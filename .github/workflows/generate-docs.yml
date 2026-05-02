@@ -1,5 +1,5 @@
 name: Generate Markdown Docs
-on: [push] # Chạy mỗi khi bạn update file
+on: [push]
 
 jobs:
   build:
@@ -12,8 +12,7 @@ jobs:
         run: npm install -g jsdoc-to-markdown
 
       - name: Create Markdown File
-        # Thay 'ten-file-cua-ban.js' bằng tên file thật của bạn
-        run: jsdoc2md your_file_name.js > API.md 
+        run: jsdoc2md delf_b2_production_orale.js > API.md 
 
       - name: Commit and Push
         run: |
